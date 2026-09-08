@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/nickhilster/Buy-Local-4-Local/schemas/product.schema.json",
+  "title": "Buy Local 4 Local Product",
+  "type": "object",
+  "required": ["product_id", "name", "entity_type"],
+  "properties": {
+    "entity_type": {"const": "product"},
+    "product_id": {"type": "string", "minLength": 1},
+    "name": {"type": "string", "minLength": 1},
+    "brand_id": {"type": ["string", "null"]},
+    "identifiers": {
+      "type": "object",
+      "properties": {
+        "gtin": {"type": ["string", "null"]},
+        "upc": {"type": ["string", "null"]},
+        "ean": {"type": ["string", "null"]},
+        "sku_aliases": {"type": "array", "items": {"type": "string"}}
+      },
+      "additionalProperties": false
+    },
+    "category": {"type": ["string", "null"]},
+    "aliases": {"type": "array", "items": {"type": "string"}},
+    "claim_ids": {"type": "array", "items": {"type": "string"}},
+    "external_refs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["system", "id"],
+        "properties": {
+          "system": {"type": "string"},
+          "id": {"type": "string"},
+          "url": {"type": "string"}
+        },
+        "additionalProperties": false
+      }
+    },
+    "notes": {"type": "string"}
+  },
+  "additionalProperties": false
+}
