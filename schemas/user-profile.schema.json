@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/nickhilster/Buy-Local-4-Local/schemas/user-profile.schema.json",
+  "title": "Buy Local 4 Local Private User Profile",
+  "description": "Private/local profile. MUST NOT be submitted to the public dataset.",
+  "type": "object",
+  "required": ["schema_version", "privacy", "known_context"],
+  "properties": {
+    "schema_version": {"type": "string"},
+    "privacy": {
+      "type": "object",
+      "required": ["public_submission_allowed"],
+      "properties": {
+        "public_submission_allowed": {"const": false}
+      },
+      "additionalProperties": false
+    },
+    "known_context": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["kind", "value", "certainty"],
+        "properties": {
+          "kind": {
+            "type": "string",
+            "enum": ["product", "brand", "recipe", "ingredient", "retailer", "store", "category", "constraint", "preference", "accepted_substitution", "rejected_substitution", "household_need", "pet_need"]
+          },
+          "value": {},
+          "certainty": {"type": "string", "enum": ["known", "inferred", "unknown"]},
+          "source_context": {"type": "string"},
+          "last_observed": {"type": ["string", "null"], "format": "date"},
+          "notes": {"type": "string"}
+        },
+        "additionalProperties": false
+      }
+    },
+    "location_context": {
+      "type": "object",
+      "description": "Keep only as precise as necessary for shopping. Never upload this profile publicly.",
+      "properties": {
+        "country": {"type": ["string", "null"]},
+        "province_region": {"type": ["string", "null"]},
+        "city": {"type": ["string", "null"]},
+        "neighbourhood": {"type": ["string", "null"]}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
