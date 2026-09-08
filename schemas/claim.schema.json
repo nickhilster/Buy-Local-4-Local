@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/nickhilster/Buy-Local-4-Local/schemas/claim.schema.json",
+  "title": "Buy Local 4 Local Claim",
+  "type": "object",
+  "required": ["claim_id", "subject", "property", "value", "status", "evidence", "observed_at"],
+  "properties": {
+    "claim_id": {"type": "string", "minLength": 1},
+    "subject": {
+      "type": "object",
+      "required": ["entity_type", "entity_id"],
+      "properties": {
+        "entity_type": {
+          "type": "string",
+          "enum": ["product", "brand", "company", "retailer", "store", "manufacturer", "jurisdiction", "trade_measure"]
+        },
+        "entity_id": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    },
+    "property": {
+      "type": "string",
+      "examples": ["ultimate_parent", "jurisdiction_of_control", "manufactured_in", "sold_by", "tariff_rate"]
+    },
+    "value": {},
+    "qualifiers": {"type": "object", "additionalProperties": true},
+    "status": {
+      "type": "string",
+      "enum": ["candidate", "verified", "disputed", "stale", "rejected"]
+    },
+    "confidence": {
+      "type": "string",
+      "enum": ["low", "medium", "high", "very_high"]
+    },
+    "observed_at": {"type": "string", "format": "date"},
+    "refresh_after": {"type": ["string", "null"], "format": "date"},
+    "evidence": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["source", "source_type", "retrieved_at"],
+        "properties": {
+          "source": {"type": "string", "minLength": 1},
+          "source_type": {
+            "type": "string",
+            "enum": [
+              "government",
+              "corporate_filing",
+              "official_company",
+              "official_product",
+              "official_retailer",
+              "open_dataset",
+              "reputable_secondary",
+              "community_submission",
+              "packaging_observation",
+              "agent_inference"
+            ]
+          },
+          "retrieved_at": {"type": "string", "format": "date"},
+          "supports": {"type": "boolean", "default": true},
+          "notes": {"type": "string"}
+        },
+        "additionalProperties": false
+      }
+    },
+    "notes": {"type": "string"}
+  },
+  "additionalProperties": false
+}
