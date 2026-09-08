@@ -1,0 +1,42 @@
+{
+  "project": "Buy Local 4 Local",
+  "protocol_version": "0.1.0",
+  "schema_version": "0.1.0",
+  "dataset_version": "0.0.0-bootstrap",
+  "status": "foundation-dogfood",
+  "canonical_repository": "https://github.com/nickhilster/Buy-Local-4-Local",
+  "protocol": "BUY_LOCAL_4_LOCAL.md",
+  "architecture": "ARCHITECTURE.md",
+  "schemas": {
+    "claim": "schemas/claim.schema.json",
+    "product": "schemas/product.schema.json",
+    "contribution": "schemas/contribution.schema.json",
+    "private_user_profile": "schemas/user-profile.schema.json"
+  },
+  "methodology": {
+    "evidence": "methodology/evidence.md",
+    "freshness": "methodology/freshness.md",
+    "purchasing_policy": "methodology/purchasing-policy.md",
+    "privacy": "methodology/privacy.md"
+  },
+  "data": {
+    "readme": "data/README.md",
+    "entities_root": "data/entities",
+    "claims_root": "data/claims",
+    "contributions_root": "data/contributions"
+  },
+  "contribution": {
+    "instructions": "CONTRIBUTING.md",
+    "direct_public_write": false,
+    "supported_routes": [
+      "pull_request",
+      "structured_github_issue",
+      "local_export"
+    ],
+    "api_endpoint": null
+  },
+  "privacy": {
+    "public_dataset_accepts_personal_context": false,
+    "private_profile_must_not_be_uploaded": true
+  }
+}
