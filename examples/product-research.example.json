@@ -1,0 +1,53 @@
+{
+  "schema_version": "0.1.0",
+  "contribution_id": "contrib:example:2026-09-08",
+  "created_at": "2026-09-08T00:00:00Z",
+  "agent": {
+    "provider": "example-provider",
+    "model": "example-model",
+    "protocol_version": "0.1.0"
+  },
+  "entities": [
+    {
+      "entity_type": "brand",
+      "brand_id": "brand:example",
+      "name": "Example Brand"
+    },
+    {
+      "entity_type": "company",
+      "company_id": "company:example-holdings",
+      "name": "Example Holdings"
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "claim:example-brand:ultimate-parent:2026-09-08",
+      "subject": {
+        "entity_type": "brand",
+        "entity_id": "brand:example"
+      },
+      "property": "ultimate_parent",
+      "value": "company:example-holdings",
+      "status": "candidate",
+      "confidence": "high",
+      "observed_at": "2026-09-08",
+      "refresh_after": "2027-03-07",
+      "evidence": [
+        {
+          "source": "https://example.com/ownership-source",
+          "source_type": "official_company",
+          "retrieved_at": "2026-09-08",
+          "supports": true,
+          "notes": "Example only. Replace with real evidence in an actual contribution."
+        }
+      ],
+      "notes": "Synthetic example; not canonical product data."
+    }
+  ],
+  "privacy_attestation": {
+    "contains_personal_context": false,
+    "contains_private_conversation_content": false,
+    "sanitized": true
+  },
+  "notes": "This file demonstrates contribution shape only and must not be treated as real provenance data."
+}
